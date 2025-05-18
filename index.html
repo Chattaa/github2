@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quer namorar comigo?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        body::before {
+            content: "💖💗💘💕💞";
+            position: fixed;
+            top: -100px;
+            font-size: 40px;
+            animation: hearts 10s linear infinite;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+            opacity: 0.2;
+        }
+
+        @keyframes hearts {
+            0% {
+                top: -100px;
+                opacity: 0.3;
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+
+        .painel {
+            background-color: white;
+            max-width: 90%;
+            width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 15px rgba(255, 192, 203, 0.5);
+        }
+
+        img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            margin: 20px auto;
+        }
+
+        button {
+            height: 45px;
+            width: 90px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            margin: 15px 10px;
+            transition: 0.3s ease;
+        }
+
+        #sim {
+            background-color: #ff69b4;
+            color: white;
+        }
+
+        #sim:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+            background-color: #ff85c1;
+        }
+
+        #nao {
+            background-color: #eee;
+            position: absolute;
+        }
+
+        #nao:hover {
+            cursor: not-allowed;
+        }
+
+        h1 {
+            color: #ff69b4;
+        }
+
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body onclick="tocarMusica()">
+
+    <div class="painel">
+        <h1>Quer namorar comigo?</h1>
+        <h3>Você voltou pra minha vida e tudo ficou melhor. Mal posso esperar para viver coisas incríveis com você. Eu te amo! 💖</h3>
+        <img src="C:\Users\edufm\projetinho\pedido celular\eu e gabi.jpg" alt="nós dois">
+        <br>
+        <button id="sim" onclick="resposta()">Sim!</button>
+        <button id="nao" onmouseover="fuja()">Não!</button>
+    </div>
+
+    <!-- Sons -->
+    <audio id="somNao" src="C:\Users\edufm\projetinho\pedido celular\risada.mp3"></audio>
+    <audio id="musica" src="C:\Users\edufm\projetinho\pedido celular\musica rom.mp3" loop></audio>
+
+    <script>
+        function tocarMusica() {
+            const audio = document.getElementById("musica");
+            if (audio.paused) {
+                audio.play();
+            }
+        }
+
+        function resposta() {
+            alert("EU SABIA!!! 💖 Você me faz MUITO feliz! 😍");
+        }
+
+        function fuja() {
+            var botaoNao = document.getElementById("nao");
+            var som = document.getElementById("somNao");
+            som.play();
+
+            var largura = window.innerWidth - botaoNao.offsetWidth;
+            var altura = window.innerHeight - botaoNao.offsetHeight;
+
+            var aleatorioX = Math.floor(Math.random() * largura);
+            var aleatorioY = Math.floor(Math.random() * altura);
+
+            botaoNao.style.left = aleatorioX + "px";
+            botaoNao.style.top = aleatorioY + "px";
+        }
+    </script>
+
+</body>
+</html>
